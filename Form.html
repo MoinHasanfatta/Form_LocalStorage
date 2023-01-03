@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <style>
+        * {
+            background-color: peru;
+            text-align: center;
+        }
+
+       .container {
+            background-color: aqua;
+            font-size: 28px;
+            font-style: italic;
+        }
+        #my-form  {
+            /* width: 400px;
+            height: 250px; */
+            background-color: red;
+            color: white
+        }
+        #name {
+            margin: 3px;
+            padding: 5px;
+            color: blue;
+            border-radius: 12px;
+            font-size: medium;
+            width: 30%;
+        }
+        #email {
+            margin: 3px;
+            padding: 5px;
+            color: blue;
+            border-radius: 12px;
+            font-size: medium;
+            width: 30%;
+        }
+        .btn {
+            background-color: black;
+            color: aquamarine;
+            width: 25%;
+            border-radius: 14px;
+            margin: 4px 5px 0 80px;
+            padding: 5px;
+
+        }
+        .btn:hover {
+            background-color: aliceblue;
+            color: black;
+            font-size: large;
+            cursor: pointer;
+            transition: 0.7s ease-in-out;
+        }
+    </style>
+    <header>
+        <h1> JS for beginner</h1>
+    </header>
+    <section>
+        <div class="container">
+            <form id ="my-form">
+            <h2> Add User </h2>
+            <div class="msg"></div>
+        </div>
+        <div>
+        <label for="name"> Name :</label>
+        <input type ='text' id="name" placeholder="please enter a valid name">
+        </div>
+        <div>
+            <label for="email"> Email :</label>
+            <input type ='text' id="email" placeholder="please enter a valid email"><br><br>
+        
+        
+            <input class ="btn" type="submit" value="Submit">
+           
+        </div>
+      
+       
+        </form>
+        <ul id="users"></ul>
+        
+    </section>
+
+    <script>
+        console.log(window)
+         
+        const myForm = document.querySelector('#my-form');
+        const nameInp = document.querySelector('#name');
+        const emailInp = document.querySelector('#email');
+        const msg = document.querySelector('.msg');
+        const userList = document.querySelector('#users');
+
+        myForm.addEventListener('submit', onSubmit);
+
+        function onSubmit(e)  {
+            e.preventDefault();
+            console.log(nameInp.value)
+
+            if(nameInp.value === '' || emailInp.value === '') {
+                msg.innerHTML="Please Enter all Fields";
+                setTimeout(() => msg.remove(), 2000);
+            }else {
+                    const li = document.createElement('li');
+                    li.appendChild(document.createTextNode (
+                        `${nameInp.value} : ${emailInp.value}`
+                    ));
+
+                    userList.appendChild(li);
+                    nameInp.value = '';
+                    emailInp.value = '';
+                }
+            }
+        
+        </script>
+</body>
+</html>
